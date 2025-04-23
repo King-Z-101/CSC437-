@@ -36,3 +36,11 @@ body {
     font-size: 2.5rem;
     margin: 0;
   }
+
+  svg.icon {
+    display: inline;
+    height: 10em;
+    width: 10em;
+    vertical-align: top;
+    fill: var(--color-accent);
+  }
