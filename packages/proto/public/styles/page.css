@@ -39,8 +39,8 @@ body {
 
   svg.icon {
     display: inline;
-    height: 10em;
-    width: 10em;
+    height: 5em;
+    width: 5em;
     vertical-align: top;
     fill: var(--color-accent);
   }
