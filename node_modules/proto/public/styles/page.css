@@ -7,13 +7,28 @@ body {
     margin: 0;
     padding: 0;
   }
+.page_grid {
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), 1fr);
+  gap: 1rem; /* Adjust as needed */
+}
+.page_grid > * {
+  grid-column: 1 / span 4;
+
+}
+    
 header {
   background-color: var(--color-background-header);
   color: var(--color-accent);
   padding: 1rem 2rem;
   text-align: center;
   border-bottom: 3px solid var(--color-accent);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
 .nav {
   display: flex;
   justify-content: center;
@@ -22,6 +37,16 @@ header {
   font-size: 1.2rem;
   font-weight: 600;
 }  
+@media (max-width: 600px) {
+  .nav {
+    flex-direction: column; /* stack vertically */
+    align-items: center;    /* optional: center the links */
+  }
+  /* .page_grid > * {
+    --
+  } */
+}
+
 a {
   color: var(--color-link);
   text-decoration: none;
