@@ -10,3 +10,13 @@
     --grid-columns: 12;  
 }
 
+body.light-mode {
+    --color-background-page: #f5f7fa;               /* Soft light gray-blue */
+    --color-text: #1c1e21;                         /* Near-black text */
+    --color-background-header: #dce6f0;            /* Gentle pale blue header */
+    --color-accent: #29b6f6;                       /* Bright sky blue */
+    --color-link: #0077cc;                         /* Link blue */
+    --color-text-inverted: #ffffff;                /* For dark text on accent bg */
+  }
+  
+  
