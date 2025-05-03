@@ -20,6 +20,14 @@ header {
   align-items: center;
 }
 
+.light-toggle {
+  font-size: 1rem;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
 .nav {
   display: flex;
   justify-content: center;
