@@ -1,0 +1,23 @@
+:root {
+    --color-accent: rgb(255, 0, 255);                    /* Neon magenta */
+    --color-accent-inverted: rgb(0, 255, 128);           /* Electric green */
+    --color-link: var(--color-accent);
+    --color-link-inverted: var(--color-accent-inverted);
+    --color-text: rgb(230, 230, 255);                    /* Light bluish-white */
+    --color-text-inverted: rgb(10, 10, 30);              /* Dark blue-black */
+    --color-background-header: rgb(30, 30, 80);          /* Dark blue header */
+    --color-background-page: rgb(10, 10, 30);            /* Dark blue base */
+    --grid-columns: 12;  
+}
+
+body.light-mode {
+    --color-accent: rgb(41, 182, 246);    
+    --color-accent-inverted: rgb(0, 102, 204);  
+    --color-link: rgb(0, 119, 204); 
+    --color-link-inverted: var(--color-accent-inverted); 
+    --color-text: rgb(28, 30, 33);        
+    --color-text-inverted: rgb(255, 255, 255);           
+    --color-background-header: rgb(220, 230, 240);
+    --color-background-page: rgb(245, 247, 250)
+}
+
