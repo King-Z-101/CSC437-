@@ -49,8 +49,9 @@ export class AnimalElement extends LitElement {
           grid-column: 1 / span 6;
           }
         img {
-        grid-column: auto / span 6;
+        grid-column: auto / span 5;
         width: 100%;
+        padding-bottom: 1rem;
         }    
     `];
 }
