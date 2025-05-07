@@ -27,7 +27,7 @@
     </label>
   </header>
   <main class="page_grid">
-    <zoo-animal
+    <!-- <zoo-animal
       img-src="../images/dodo_bird.jpg"
       titleHeader="Info"
       name="Pedro"
@@ -36,16 +36,20 @@
       era="Holocene (Last Sighting in 1681!)"
       life="20 years"
     >
-      Dodo Bird
-    </zoo-animal>
+    Dodo Bird
+    </zoo-animal> -->
+    <animal-wrapper src="../data/animals.json" animal="1"></animal-wrapper>
+    
   </main>
   
   <script type="module">
     import { define } from "@calpoly/mustang";
     import { AnimalElement } from "/src/zoo_animal.js";
+    import { AnimalWrapperElement } from "/src/wrapper_animal.js";
   
     define({
-      "zoo-animal": AnimalElement
+      "zoo-animal": AnimalElement,
+      "animal-wrapper": AnimalWrapperElement
     });
   </script>
 </body>
