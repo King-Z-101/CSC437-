@@ -1,5 +1,6 @@
 [
   {
+    "animalid": "a1",
     "imgSrc": "../images/dire_wolf.png",
     "titleHeader": "Info",
     "name": "Fang",
@@ -9,6 +10,7 @@
     "life": "8 years"
   },
   {
+    "animalid": "a2",
     "imgSrc": "../images/dodo_bird.jpg",
     "titleHeader": "Info",
     "name": "Pedro",
