@@ -24,11 +24,14 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 var import_express = __toESM(require("express"));
 var import_mongo = require("./services/mongo");
 var import_animal_svc = __toESM(require("./services/animal-svc"));
+var import_animals = __toESM(require("./routes/animals"));
 (0, import_mongo.connect)("zoo");
 const app = (0, import_express.default)();
 const port = process.env.PORT || 3e3;
 const staticDir = process.env.STATIC || "public";
 app.use(import_express.default.static(staticDir));
+app.use(import_express.default.json());
+app.use("/api/animals", import_animals.default);
 app.get("/hello", (req, res) => {
   res.send("Hello, World");
 });

@@ -44,4 +44,24 @@ function get(animalid) {
     throw `${animalid} Not Found`;
   });
 }
-var animal_svc_default = { index, get };
+function create(animalData) {
+  const animal = new AnimalModel(animalData);
+  return animal.save();
+}
+function update(animalId, animalData) {
+  return AnimalModel.findOneAndUpdate(
+    { animalid: animalId },
+    // Use animalid instead of _id to match your schema
+    animalData,
+    { new: true }
+  ).then((updated) => {
+    if (!updated) throw `Animal ${animalId} not found`;
+    return updated;
+  });
+}
+function remove(animalId) {
+  return AnimalModel.findOneAndDelete({ animalid: animalId }).then((deleted) => {
+    if (!deleted) throw `Animal ${animalId} not found`;
+  });
+}
+var animal_svc_default = { index, get, create, update, remove };

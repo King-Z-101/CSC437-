@@ -29,4 +29,31 @@ function get(animalid: String): Promise<Animal> {
     });
 }
 
-export default { index, get };
+// Create a new animal
+function create(animalData: Animal): Promise<Animal> {
+  const animal = new AnimalModel(animalData);
+  return animal.save();
+}
+
+// Update an animal
+function update(animalId: String, animalData: Animal): Promise<Animal> {
+  return AnimalModel.findOneAndUpdate(
+    { animalid: animalId }, // Use animalid instead of _id to match your schema
+    animalData,
+    { new: true }
+  ).then((updated) => {
+    if (!updated) throw `Animal ${animalId} not found`;
+    return updated;
+  });
+}
+
+// Delete an animal
+function remove(animalId: String): Promise<void> {
+  return AnimalModel.findOneAndDelete({ animalid: animalId }).then((deleted) => {
+    if (!deleted) throw `Animal ${animalId} not found`;
+  });
+}
+
+
+// Make sure to export all functions
+export default { index, get, create, update, remove };
