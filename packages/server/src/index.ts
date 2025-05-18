@@ -17,18 +17,6 @@ app.get("/hello", (req: Request, res: Response) => {
     res.send("Hello, World");
 });
 
-app.get("/animals/:animalid", (req: Request, res: Response) => {
-  const { animalid } = req.params;
-
-  Animals.get(animalid).then((data) => {
-    if (data) res
-      .set("Content-Type", "application/json")
-      .send(JSON.stringify(data));
-    else res 
-      .status(404).send();  
-    });
-});
-
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });

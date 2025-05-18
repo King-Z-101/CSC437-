@@ -40,8 +40,11 @@ function index() {
   return AnimalModel.find();
 }
 function get(animalid) {
-  return AnimalModel.find({ animalid }).then((list) => list[0]).catch((err) => {
-    throw `${animalid} Not Found`;
+  return AnimalModel.find({ animalid }).then((list) => {
+    if (list.length === 0) {
+      throw `${animalid} Not Found`;
+    }
+    return list[0];
   });
 }
 function create(animalData) {

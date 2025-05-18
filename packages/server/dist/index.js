@@ -23,7 +23,6 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 ));
 var import_express = __toESM(require("express"));
 var import_mongo = require("./services/mongo");
-var import_animal_svc = __toESM(require("./services/animal-svc"));
 var import_animals = __toESM(require("./routes/animals"));
 (0, import_mongo.connect)("zoo");
 const app = (0, import_express.default)();
@@ -34,13 +33,6 @@ app.use(import_express.default.json());
 app.use("/api/animals", import_animals.default);
 app.get("/hello", (req, res) => {
   res.send("Hello, World");
-});
-app.get("/animals/:animalid", (req, res) => {
-  const { animalid } = req.params;
-  import_animal_svc.default.get(animalid).then((data) => {
-    if (data) res.set("Content-Type", "application/json").send(JSON.stringify(data));
-    else res.status(404).send();
-  });
 });
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
