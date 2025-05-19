@@ -16,7 +16,9 @@ export default defineConfig({
         sub5: resolve(__dirname, 'animal/species_info/species_dire_wolf.html'),
         sub6: resolve(__dirname, 'animal/species_info/species_dodo_bird.html'),
         sub7: resolve(__dirname, 'natural_habitat/island_tropical_enclosure.html'), 
-        sub8: resolve(__dirname, 'natural_habitat/pleistocene_plains.html')
+        sub8: resolve(__dirname, 'natural_habitat/pleistocene_plains.html'),
+        login: resolve(__dirname, 'login.html'),
+        register: resolve(__dirname, 'register.html')
       },
     },
   },

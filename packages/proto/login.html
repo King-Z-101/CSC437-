@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="/styles/reset.css" />
+  <link rel="stylesheet" href="/styles/page.css" />
+  <link rel="stylesheet" href="/styles/tokens.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+  <script type="module">
+    import { define, Auth } from "@calpoly/mustang";
+    import { LoginFormElement } from "/src/auth/login-form.js";
+
+    define({
+      "mu-auth": Auth.Provider,
+      "login-form": LoginFormElement
+    });
+  </script>
+  <title>Zookeeper Login</title>
+</head>
+<body class="page">
+  <mu-auth provides="zoo:auth">
+    <header class="header_flex">
+      <svg class="icon">
+        <use href="./icons/animal.svg#icon-dire_wolf" />
+      </svg>
+      <h1>Prehistoric Zoo</h1>
+      <nav class="nav">
+        <a href="./index.html">Main Page</a>
+      </nav>
+    </header>
+    <main class="page_grid">
+      <div class="login-container">
+        <h2>Zookeeper Login</h2>
+        <div class="card">
+          <login-form api="/auth/login">
+            <label>
+              <span>Zookeeper ID:</span>
+              <input name="username" autocomplete="off" />
+            </label>
+            <label>
+              <span>Password:</span>
+              <input type="password" name="password" />
+            </label>
+          </login-form>
+        </div>
+        <p>
+          New zookeeper? <a href="register.html">Register for access</a>
+        </p>
+      </div>
+    </main>
+  </mu-auth>
+  <style>
+    .login-container {
+      max-width: 400px;
+      margin: 2rem auto;
+    }
+    .card {
+      background: var(--color-surface);
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    label {
+      display: block;
+      margin-bottom: 1rem;
+    }
+    label span {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 0.5rem;
+      border: 1px solid var(--color-border);
+      border-radius: 4px;
+    }
+  </style>
+</body>
+</html>

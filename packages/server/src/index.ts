@@ -3,6 +3,7 @@ import express, { Request, Response } from "express";
 import { connect } from "./services/mongo";
 import Animals from "./services/animal-svc";
 import animalRoutes from "./routes/animals";
+import auth, { authenticateZookeeper } from "./routes/auth";
 
 connect("zoo");
 const app = express();
@@ -11,7 +12,11 @@ const staticDir = process.env.STATIC || "public";
 
 app.use(express.static(staticDir));
 app.use(express.json());
-app.use("/api/animals", animalRoutes);
+app.use("/auth", auth);
+
+
+// Protect your animal routes with authentication
+app.use("/api/animals", authenticateZookeeper, animalRoutes);
 
 app.get("/hello", (req: Request, res: Response) => {
     res.send("Hello, World");

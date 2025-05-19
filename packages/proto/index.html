@@ -9,33 +9,99 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
   <script src="/scripts/light.js"></script>
+  <!-- Add import for mu-auth -->
+  <script type="module">
+    import { define, Auth } from "@calpoly/mustang";
+    
+    define({
+      "mu-auth": Auth.Provider
+    });
+  </script>
   <title>Prehistoric Zoo</title>
 </head>
 <body>
-  <header class="header_flex">
-    <svg class="icon">
-      <use href="icons/habitat.svg#icon-main" />
-    </svg>
-    <h1>Prehistoric Zoo</h1>
-    <label class="light-toggle">
-      <input type="checkbox" id="lightmode-toggle">
-      Toggle Light Mode
-    </label>       
-  </header>
-  <main class="page_grid">
-    <h1>Visit:</h1>
-    <ul>
-      <li><a href="natural-habitat.html">Enclosures</a>
-        <svg class="icon">
-          <use href="icons/habitat.svg#icon-habitat" />
-        </svg>
-      </li>
-      <li><a href="animal.html">Animal List</a>
-        <svg class="icon">
-          <use href="icons/animal.svg#icon-animal" />
-        </svg>
-      </li>
-    </ul>
-  </main>
+  <!-- Wrap everything with mu-auth -->
+  <mu-auth provides="zoo:auth">
+    <header class="header_flex">
+      <svg class="icon">
+        <use href="icons/habitat.svg#icon-main" />
+      </svg>
+      <h1>Prehistoric Zoo</h1>
+      
+      <!-- Add this auth section to your header -->
+      <div class="auth-section" style="margin-left: auto; margin-right: 1rem;">
+        <span id="user-status"></span>
+        <a href="/login.html" id="login-link" class="auth-link">Zookeeper Login</a>
+        <button id="logout-button" style="display: none; background: none; border: none; color: #ff00ff; cursor: pointer; font-weight: bold;">Sign Out</button>
+      </div>
+      
+      <label class="light-toggle">
+        <input type="checkbox" id="lightmode-toggle">
+        Toggle Light Mode
+      </label>       
+    </header>
+    
+    <main class="page_grid">
+      <h1>Visit:</h1>
+      <ul>
+        <li><a href="natural-habitat.html">Enclosures</a>
+          <svg class="icon">
+            <use href="icons/habitat.svg#icon-habitat" />
+          </svg>
+        </li>
+        <li><a href="animal.html">Animal List</a>
+          <svg class="icon">
+            <use href="icons/animal.svg#icon-animal" />
+          </svg>
+        </li>
+      </ul>
+    </main>
+    <script type="module">
+      import { Observer } from "@calpoly/mustang";
+      
+      // Elements
+      const userStatus = document.getElementById("user-status");
+      const loginLink = document.getElementById("login-link");
+      const logoutButton = document.getElementById("logout-button");
+      
+      // Create auth observer
+      class AuthObserver {
+        constructor() {
+          // Set up observer
+          this.observer = new Observer(document, "zoo:auth");
+          
+          // Set up UI updater
+          this.observer.observe((auth) => {
+            this.updateUI(auth);
+          });
+          
+          // Set up logout handler
+          logoutButton.addEventListener("click", () => {
+            document.dispatchEvent(new CustomEvent("auth:message", {
+              bubbles: true,
+              composed: true,
+              detail: ["auth/signout"]
+            }));
+          });
+        }
+        
+        updateUI(auth) {
+          const user = auth?.user;
+          if (user && user.authenticated) {
+            userStatus.textContent = `Zookeeper: ${user.username} | `;
+            loginLink.style.display = "none";
+            logoutButton.style.display = "inline";
+          } else {
+            userStatus.textContent = "";
+            loginLink.style.display = "inline";
+            logoutButton.style.display = "none";
+          }
+        }
+      }
+      
+      // Initialize observer
+      new AuthObserver();
+    </script>
+  </mu-auth>
 </body>
 </html>
