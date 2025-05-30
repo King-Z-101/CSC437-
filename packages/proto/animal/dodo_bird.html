@@ -11,46 +11,42 @@
   <title>Dodo Bird</title>
 </head>
 <body>
-  <header class="header_flex">
-    <svg class="icon">
-      <use href="../icons/animal.svg#icon-dodo_bird" />
-    </svg>
-    <h1>Dodo Bird</h1>
-    <nav class="nav">
-      <a href="../index.html">Main Page</a>
-      <a href="../natural_habitat/island_tropical_enclosure.html">Natural Habitat</a>
-      <a href="species_info/species_dodo_bird.html">Species</a>
-    </nav>
-    <label class="light-toggle">
-      <input type="checkbox" id="lightmode-toggle">
-      Toggle Light Mode
-    </label>
-  </header>
-  <main class="page_grid">
-    <!-- <zoo-animal
-      img-src="../images/dodo_bird.jpg"
-      titleHeader="Info"
-      name="Pedro"
-      diet="Herbivore"
-      food="Fruits, Seeds, Nuts"
-      era="Holocene (Last Sighting in 1681!)"
-      life="20 years"
-    >
-    Dodo Bird
-    </zoo-animal> -->
-    <animal-wrapper src="../data/animals.json" animal="1"></animal-wrapper>
+  <mu-auth provides="zoo:auth">
+    <header class="header_flex">
+      <svg class="icon">
+        <use href="../icons/animal.svg#icon-dodo_bird" />
+      </svg>
+      <h1>Dodo Bird</h1>
+      <nav class="nav">
+        <a href="../index.html">Main Page</a>
+        <a href="../natural_habitat/island_tropical_enclosure.html">Natural Habitat</a>
+        <a href="species_info/species_dodo_bird.html">Species</a>
+      </nav>
+      <label class="light-toggle">
+        <input type="checkbox" id="lightmode-toggle">
+        Toggle Light Mode
+      </label>
+      <zoo-header></zoo-header>
+    </header>
+    <main class="page_grid">
+      <animal-wrapper src="/api/animals" animal="1"></animal-wrapper>
+    </main>
     
-  </main>
-  
-  <script type="module">
-    import { define } from "@calpoly/mustang";
-    import { AnimalElement } from "/src/zoo_animal.js";
-    import { AnimalWrapperElement } from "/src/wrapper_animal.js";
-  
-    define({
-      "zoo-animal": AnimalElement,
-      "animal-wrapper": AnimalWrapperElement
-    });
-  </script>
+    <script type="module">
+      import { define, Auth } from "@calpoly/mustang";
+      import { AnimalElement } from "/src/zoo_animal.js";
+      import { AnimalWrapperElement } from "/src/wrapper_animal.js";
+      import { HeaderElement } from "/src/header_element.js";
+    
+      define({
+        "zoo-animal": AnimalElement,
+        "animal-wrapper": AnimalWrapperElement,
+        "zoo-header": HeaderElement,
+        "mu-auth": Auth.Provider
+      });
+
+      HeaderElement.initializeOnce();
+    </script>
+  </mu-auth>
 </body>
 </html>

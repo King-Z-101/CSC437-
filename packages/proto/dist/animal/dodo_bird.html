@@ -9,40 +9,34 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
   <script src="../scripts/light.js"></script>
   <title>Dodo Bird</title>
-  <script type="module" crossorigin src="/assets/sub4-DARU3jA2.js"></script>
-  <link rel="modulepreload" crossorigin href="/assets/wrapper_animal-VcPFATaf.js">
+  <script type="module" crossorigin src="/assets/sub4-wM5qSf8X.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/state-BLMoeIPb.js">
+  <link rel="modulepreload" crossorigin href="/assets/reset.css-DefCicqe.js">
+  <link rel="modulepreload" crossorigin href="/assets/wrapper_animal-Dbo5UeC0.js">
+  <link rel="modulepreload" crossorigin href="/assets/header_element-CCbREc60.js">
 </head>
 <body>
-  <header class="header_flex">
-    <svg class="icon">
-      <use href="../icons/animal.svg#icon-dodo_bird" />
-    </svg>
-    <h1>Dodo Bird</h1>
-    <nav class="nav">
-      <a href="../index.html">Main Page</a>
-      <a href="../natural_habitat/island_tropical_enclosure.html">Natural Habitat</a>
-      <a href="species_info/species_dodo_bird.html">Species</a>
-    </nav>
-    <label class="light-toggle">
-      <input type="checkbox" id="lightmode-toggle">
-      Toggle Light Mode
-    </label>
-  </header>
-  <main class="page_grid">
-    <!-- <zoo-animal
-      img-src="../images/dodo_bird.jpg"
-      titleHeader="Info"
-      name="Pedro"
-      diet="Herbivore"
-      food="Fruits, Seeds, Nuts"
-      era="Holocene (Last Sighting in 1681!)"
-      life="20 years"
-    >
-    Dodo Bird
-    </zoo-animal> -->
-    <animal-wrapper src="../data/animals.json" animal="1"></animal-wrapper>
-    
-  </main>
-  
+  <mu-auth provides="zoo:auth">
+    <header class="header_flex">
+      <svg class="icon">
+        <use href="../icons/animal.svg#icon-dodo_bird" />
+      </svg>
+      <h1>Dodo Bird</h1>
+      <nav class="nav">
+        <a href="../index.html">Main Page</a>
+        <a href="../natural_habitat/island_tropical_enclosure.html">Natural Habitat</a>
+        <a href="species_info/species_dodo_bird.html">Species</a>
+      </nav>
+      <label class="light-toggle">
+        <input type="checkbox" id="lightmode-toggle">
+        Toggle Light Mode
+      </label>
+      <zoo-header></zoo-header>
+    </header>
+    <main class="page_grid">
+      <animal-wrapper src="/api/animals" animal="1"></animal-wrapper>
+    </main>
+    
+  </mu-auth>
 </body>
 </html>

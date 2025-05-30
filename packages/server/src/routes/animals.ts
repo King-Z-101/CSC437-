@@ -1,5 +1,6 @@
 import express, { Request, Response } from "express";
 import Animals from "../services/animal-svc";
+//import { authenticateUser } from "./auth";
 
 const router = express.Router();
 

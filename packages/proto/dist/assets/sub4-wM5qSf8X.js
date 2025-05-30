@@ -1,0 +1,1 @@
+import{d as e,a as m}from"./state-BLMoeIPb.js";import{A as r,a as i}from"./wrapper_animal-Dbo5UeC0.js";import{H as a}from"./header_element-CCbREc60.js";import"./reset.css-DefCicqe.js";e({"zoo-animal":i,"animal-wrapper":r,"zoo-header":a,"mu-auth":m.Provider});a.initializeOnce();

@@ -11,46 +11,42 @@
   <title>Dire Wolf</title>
 </head>
 <body>
-  <header class="header_flex">
-    <svg class="icon">
-      <use href="../icons/animal.svg#icon-dire_wolf" />
-    </svg>
-    <h1>Dire Wolf</h1>
-    <nav class="nav">
-      <a href="../index.html">Main Page</a>
-      <a href="../natural_habitat/pleistocene_plains.html">Natural Habitat</a>
-      <a href="species_info/species_dire_wolf.html">Species</a>
-    </nav>
-    <label class="light-toggle">
-      <input type="checkbox" id="lightmode-toggle">
-      Toggle Light Mode
-    </label> 
-  </header>
-  <main class="page_grid">
-    <!-- <zoo-animal
-      img-src="../images/dire_wolf.png"
-      titleHeader="Info"
-      name="Fang"
-      diet="Carnivore"
-      food="Bison, Mastodon, Ground Sloth"
-      era="Late Pleistocene (125,000 to 10,000 Years Ago)"
-      life="8 years"
-    >
-    Dire Wolf
-    </zoo-animal>   -->
-    <animal-wrapper src="../data/animals.json" animal="0"></animal-wrapper>
-    
-  </main> 
+  <mu-auth provides="zoo:auth">
+    <header class="header_flex">
+      <svg class="icon">
+        <use href="../icons/animal.svg#icon-dire_wolf" />
+      </svg>
+      <h1>Dire Wolf</h1>
+      <nav class="nav">
+        <a href="../index.html">Main Page</a>
+        <a href="../natural_habitat/pleistocene_plains.html">Natural Habitat</a>
+        <a href="species_info/species_dire_wolf.html">Species</a>
+      </nav>
+      <label class="light-toggle">
+        <input type="checkbox" id="lightmode-toggle">
+        Toggle Light Mode
+      </label> 
+      <zoo-header></zoo-header>
+    </header>
+    <main class="page_grid">
+      <animal-wrapper src="/api/animals" animal="0"></animal-wrapper>
+    </main> 
 
-  <script type="module">
-    import { define } from "@calpoly/mustang";
-    import { AnimalElement } from "/src/zoo_animal.js";
-    import { AnimalWrapperElement } from "/src/wrapper_animal.js";
-  
-    define({
-      "zoo-animal": AnimalElement,
-      "animal-wrapper": AnimalWrapperElement
-    });
-  </script>
+    <script type="module">
+      import { define, Auth } from "@calpoly/mustang";
+      import { AnimalElement } from "/src/zoo_animal.js";
+      import { AnimalWrapperElement } from "/src/wrapper_animal.js";
+      import { HeaderElement } from "/src/header_element.js";
+    
+      define({
+        "zoo-animal": AnimalElement,
+        "animal-wrapper": AnimalWrapperElement,
+        "zoo-header": HeaderElement,
+        "mu-auth": Auth.Provider
+      });
+
+      HeaderElement.initializeOnce();
+    </script>
+  </mu-auth>
 </body>
 </html>
