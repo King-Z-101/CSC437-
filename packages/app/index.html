@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <link rel="stylesheet" href="/styles/reset.css" />
+  <link rel="stylesheet" href="/styles/page.css" />
+  <link rel="stylesheet" href="/styles/tokens.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+  <script src="/scripts/light.js"></script>
+  <title>Prehistoric Zoo</title>
+</head>
+<body>
+  <mu-history provides="zoo:history">
+    <mu-auth provides="zoo:auth" redirect="/login.html">
+        <zoo-header></zoo-header> 
+        <mu-switch></mu-switch>    
+        </mu-store>
+    </mu-auth>
+  </mu-history>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

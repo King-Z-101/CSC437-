@@ -4,6 +4,9 @@ import { connect } from "./services/mongo";
 import Animals from "./services/animal-svc";
 import animalRoutes from "./routes/animals";
 import auth, { authenticateUser } from "./routes/auth";
+// ...existing imports...
+import fs from "node:fs/promises";
+import path from "path";
 
 connect("zoo");
 const app = express();
@@ -18,6 +21,14 @@ app.use("/auth", auth);
 
 app.get("/hello", (req: Request, res: Response) => {
     res.send("Hello, World");
+});
+
+// SPA Routes: /app/...
+app.use("/app", (req: Request, res: Response) => {
+  const indexHtml = path.resolve(staticDir, "index.html");
+  fs.readFile(indexHtml, { encoding: "utf8" }).then((html) =>
+    res.send(html)
+  );
 });
 
 app.listen(port, () => {
